@@ -1,0 +1,52 @@
+.root {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    // background-color: #dddddd;
+    width: 350px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.inputAndButton {
+    // background-color: #cccccc;
+    width: 100%;
+    height: 50px;
+    border: none;
+    font-size: large;
+}
+
+button {
+    background-color: #5555ff;
+    position: relative;
+    z-index: 0;
+    color: #ffffff;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: #333333;
+        opacity: 0;
+        transition: all 0.2s;
+    }
+
+    &:hover::before {
+        opacity: 0.15;
+    }
+
+    &:hover {
+        font-size: larger;
+    }
+}
