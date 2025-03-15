@@ -19,9 +19,9 @@ export default function WindowHeader() {
 
     return (
         <div className={styles.root}>
-            <button className={`${styles.button} ${styles.closeButton}`} onClick={handleCloseButton}><FontAwesomeIcon icon={faXmark} /></button>
-            <button className={styles.button} onClick={handleMaximizeButton}><FontAwesomeIcon icon={faSquare} /></button>
-            <button className={styles.button} onClick={handleMinimizeButton}><FontAwesomeIcon icon={faMinus} /></button>
+            <button className={`${styles.button} ${styles.closeButton}`} onClick={handleCloseButton}><FontAwesomeIcon icon={faXmark} className={styles.FontAwesomeIcon} /></button>
+            <button className={styles.button} onClick={handleMaximizeButton}><FontAwesomeIcon icon={faSquare} className={styles.FontAwesomeIcon} /></button>
+            <button className={styles.button} onClick={handleMinimizeButton}><FontAwesomeIcon icon={faMinus} className={styles.FontAwesomeIcon} /></button>
         </div>
     )
 }
