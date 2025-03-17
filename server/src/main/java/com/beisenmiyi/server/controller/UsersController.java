@@ -21,8 +21,10 @@ public class UsersController {
     public ResponseEntity<String> login(@RequestBody UsersEntity user) {
         if (usersService.login(user)) {
             return new ResponseEntity<>("登录成功", HttpStatus.OK);
-        } else {
+        } else if (!usersService.login(user)){
             return new ResponseEntity<>("登录失败", HttpStatus.UNAUTHORIZED);
+        } else {
+            return new ResponseEntity<>("未知错误", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }
