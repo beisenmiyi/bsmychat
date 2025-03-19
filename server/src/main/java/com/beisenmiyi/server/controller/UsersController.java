@@ -11,20 +11,29 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class UsersController {
 
     @Autowired
     private UsersService usersService;
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody UsersEntity user) {
-        if (usersService.login(user)) {
-            return new ResponseEntity<>("登录成功", HttpStatus.OK);
-        } else if (!usersService.login(user)){
-            return new ResponseEntity<>("登录失败", HttpStatus.UNAUTHORIZED);
+    public ResponseEntity<Long> login(@RequestBody UsersEntity user) {
+        UsersEntity userEntity = usersService.login(user);
+        if (userEntity != null) {
+//            System.out.println(userEntity.getUserid());
+            return new ResponseEntity<>(userEntity.getUserid(), HttpStatus.OK);
         } else {
-            return new ResponseEntity<>("未知错误", HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+    @PostMapping("/resetPassword")
+    public ResponseEntity<Boolean> resetPassword(@RequestBody UsersEntity user) {
+        if (usersService.resetPassword(user)) {
+            return new ResponseEntity<>(true, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
         }
     }
 }

@@ -9,8 +9,18 @@ import jakarta.persistence.Table;
 public class UsersEntity {
 
     @Id
+    private Long userid;
     private String username;
     private String password;
+    private String nickname;
+
+    public long getUserid() {
+        return userid;
+    }
+
+    public void setUserid(long userid) {
+        this.userid = userid;
+    }
 
     public String getUsername() {
         return username;
@@ -26,5 +36,13 @@ public class UsersEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 }

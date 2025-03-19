@@ -1,0 +1,32 @@
+.root {
+    // background-color: green;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    // background-color: green;
+    width: 350px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.input {
+    // background-color: green;
+    width: 100%;
+    height: 50px;
+    border: none;
+    font-size: large;
+    border-radius: 10px;
+    padding-left: 10px;
+}
+
+.link {
+    color: #5555ff;
+}
