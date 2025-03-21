@@ -9,17 +9,17 @@ import jakarta.persistence.Table;
 public class UsersEntity {
 
     @Id
-    private Long userid;
+    private String userid;
     private String username;
     private String password;
     private String nickname;
 
-    public long getUserid() {
+    public String getUserid() {
         return userid;
     }
 
-    public void setUserid(long userid) {
-        this.userid = userid;
+    public void setUserid(String userid) {
+        this.userid = String.valueOf(userid);
     }
 
     public String getUsername() {

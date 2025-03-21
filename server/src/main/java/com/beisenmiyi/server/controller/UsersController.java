@@ -18,10 +18,9 @@ public class UsersController {
     private UsersService usersService;
 
     @PostMapping("/login")
-    public ResponseEntity<Long> login(@RequestBody UsersEntity user) {
+    public ResponseEntity<String> login(@RequestBody UsersEntity user) {
         UsersEntity userEntity = usersService.login(user);
         if (userEntity != null) {
-//            System.out.println(userEntity.getUserid());
             return new ResponseEntity<>(userEntity.getUserid(), HttpStatus.OK);
         } else {
             return new ResponseEntity<>(null, HttpStatus.UNAUTHORIZED);
@@ -30,10 +29,11 @@ public class UsersController {
 
     @PostMapping("/resetPassword")
     public ResponseEntity<Boolean> resetPassword(@RequestBody UsersEntity user) {
-        if (usersService.resetPassword(user)) {
-            return new ResponseEntity<>(true, HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
-        }
+        return usersService.resetPassword(user) ? new ResponseEntity<>(true, HttpStatus.OK) : new ResponseEntity<>(false, HttpStatus.NOT_FOUND);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<Boolean> register(@RequestBody UsersEntity user) {
+        return usersService.register(user) ? new ResponseEntity<>(true, HttpStatus.OK) : new ResponseEntity<>(false, HttpStatus.CONFLICT);
     }
 }
