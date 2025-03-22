@@ -29,7 +29,7 @@ ipcMain.on("closeWindow", (event) => {
     }
 });
 
-ipcMain.on("maximizeWindow", (event) => {
+ipcMain.on("maximizeOrUnmaximizeWindow", (event) => {
     const window = BrowserWindow.fromWebContents(event.sender);
     if (window) {
         if (window.isMaximized()) {
@@ -46,3 +46,10 @@ ipcMain.on("minimizeWindow", (event) => {
         window.minimize();
     }
 })
+
+ipcMain.on("maximizeWindow", (event) => {
+    const window = BrowserWindow.fromWebContents(event.sender);
+    if (window) {
+        window.maximize();
+    }
+});

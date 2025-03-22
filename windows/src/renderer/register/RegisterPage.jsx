@@ -5,6 +5,7 @@ import LoginAndRegisterAndResetPasswordButton from '../../components/LoginAndReg
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../../components/Modal/Modal';
+import WindowHeader from '../../components/WindowHeader/WindowHeader';
  
 // 注册页面组件
 export default function RegisterPage() {
@@ -61,32 +62,35 @@ export default function RegisterPage() {
     // 返回注册页面的 JSX 结构
     return (
         <div className={styles.root}>
-            <form action="" className={styles.form} onSubmit={handleSubmit}>
-                <h2>注册</h2>
-                <input 
-                    type="text" 
-                    className={styles.input} 
-                    placeholder="用户名" 
-                    value={username} 
-                    onChange={(event) => setUsername(event.target.value)} 
-                />
-                <input 
-                    type="password" 
-                    className={styles.input} 
-                    placeholder="密码" 
-                    value={password} 
-                    onChange={(event) => setPassword(event.target.value)} 
-                />
-                <input 
-                    type="password" 
-                    className={styles.input} 
-                    placeholder="确认密码" 
-                    value={confirmPassword} 
-                    onChange={(event) => setConfirmPassword(event.target.value)} 
-                />
-                <Link to="/" className={styles.link}>已有账号？ 登录</Link>
-                <LoginAndRegisterAndResetPasswordButton content={isLoading ? <>{"注册中..."}<FontAwesomeIcon icon={faSpinner} spinPulse /></> : "注册"} />
-            </form>
+            <WindowHeader />
+            <div className={styles.formContainer}>
+                <form action="" className={styles.form} onSubmit={handleSubmit}>
+                    <h2>注册</h2>
+                    <input 
+                        type="text" 
+                        className={styles.input} 
+                        placeholder="用户名" 
+                        value={username} 
+                        onChange={(event) => setUsername(event.target.value)} 
+                    />
+                    <input 
+                        type="password" 
+                        className={styles.input} 
+                        placeholder="密码" 
+                        value={password} 
+                        onChange={(event) => setPassword(event.target.value)} 
+                    />
+                    <input 
+                        type="password" 
+                        className={styles.input} 
+                        placeholder="确认密码" 
+                        value={confirmPassword} 
+                        onChange={(event) => setConfirmPassword(event.target.value)} 
+                    />
+                    <Link to="/" className={styles.link}>已有账号？ 登录</Link>
+                    <LoginAndRegisterAndResetPasswordButton content={isLoading ? <>{"注册中..."}<FontAwesomeIcon icon={faSpinner} spinPulse /></> : "注册"} />
+                </form>
+            </div>
             <Modal isOpenPasswordDifferentModal={isOpenPasswordDifferentModal} onClose={() => setIsOpenPasswordDifferentModal(false)}>两次密码输入不一致</Modal>
             <Modal isOpen={isOpenOkModal} onClose={() => {setIsOpenOkModal(false); navigate("/");}}>注册成功</Modal>
             <Modal isOpen={isOpenNetworkModal} onClose={() => setIsOpenNetworkModal(false)}>网络错误，请检查网络连接！</Modal>

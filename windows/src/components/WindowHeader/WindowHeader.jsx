@@ -10,7 +10,7 @@ export default function WindowHeader() {
     }
 
     const handleMaximizeButton = () => {
-        window.electronAPI.send("maximizeWindow");
+        window.electronAPI.send("maximizeOrUnmaximizeWindow");
     }
 
     const handleMinimizeButton = () => {

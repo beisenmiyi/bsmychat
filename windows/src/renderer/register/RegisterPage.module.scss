@@ -1,10 +1,17 @@
 .root {
     // background-color: green;
-    flex: 1;
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
+}
+
+.formContainer {
+    // background-color: green;
+    flex: 1;
+    display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .form {
