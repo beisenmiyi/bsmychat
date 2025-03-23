@@ -1,4 +1,4 @@
-import styles from './ConversationList.module.scss'
+import styles from './ConversationList.module.scss';
 
 export default function ConversationList() {
     return (
