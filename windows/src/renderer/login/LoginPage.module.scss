@@ -32,6 +32,12 @@
     font-size: large;
     border-radius: 10px;
     padding-left: 10px;
+    box-shadow: #777777 0px 0px 5px 0px;
+    outline: none;
+}
+
+input:focus {
+    border: solid 1px #aaaaaa;
 }
 
 .registerAndResetpassword {
