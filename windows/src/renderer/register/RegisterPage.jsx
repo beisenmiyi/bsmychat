@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../../components/Modal/Modal';
 import WindowHeader from '../../components/WindowHeader/WindowHeader';
+import UsernameInput from '../../components/UsernameInput/UsernameInput';
  
 // 注册页面组件
 export default function RegisterPage() {
@@ -66,26 +67,23 @@ export default function RegisterPage() {
             <div className={styles.formContainer}>
                 <form action="" className={styles.form} onSubmit={handleSubmit}>
                     <h2>注册</h2>
-                    <input 
-                        type="text" 
-                        className={styles.input} 
-                        placeholder="用户名" 
-                        value={username} 
+                    <UsernameInput 
+                        type={"text"} 
+                        placeholder={"用户名"} 
                         onChange={(event) => setUsername(event.target.value)} 
+                        value={username}
                     />
-                    <input 
-                        type="password" 
-                        className={styles.input} 
-                        placeholder="密码" 
-                        value={password} 
+                    <UsernameInput 
+                        type={"password"} 
+                        placeholder={"密码"} 
                         onChange={(event) => setPassword(event.target.value)} 
+                        value={password}
                     />
-                    <input 
-                        type="password" 
-                        className={styles.input} 
-                        placeholder="确认密码" 
-                        value={confirmPassword} 
-                        onChange={(event) => setConfirmPassword(event.target.value)} 
+                    <UsernameInput 
+                        type={"password"}
+                        placeholder={"确认密码"}
+                        onChange={(event) => setConfirmPassword(event.target.value)}
+                        value={confirmPassword}
                     />
                     <Link to="/" className={styles.link}>已有账号？ 登录</Link>
                     <LoginAndRegisterAndResetPasswordButton content={isLoading ? <>{"注册中..."}<FontAwesomeIcon icon={faSpinner} spinPulse /></> : "注册"} />

@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Modal from "../../components/Modal/Modal";
 import WindowHeader from "../../components/WindowHeader/WindowHeader";
+import UsernameInput from "../../components/UsernameInput/UsernameInput";
 
 export default function LoginPage() {
 
@@ -53,21 +54,17 @@ export default function LoginPage() {
             <div className={styles.formContainer}>
                 <form action="" className={styles.form} onSubmit={handleSubmit}>
                     <h2>登录</h2>
-                    <input
+                    <UsernameInput 
                         type="text"
-                        className={styles.input}
                         placeholder="用户名"
                         onChange={(event) => setUsername(event.target.value)}
                         value={username}
-                        required
                     />
-                    <input
+                    <UsernameInput 
                         type="password"
-                        className={styles.input} 
                         placeholder="密码"
                         onChange={(event) => setPassword(event.target.value)}
                         value={password}
-                        required
                     />
                     <div className={styles.registerAndResetpassword}>
                         <Link to="/resetPassword" className={styles.link}>忘记密码？</Link>

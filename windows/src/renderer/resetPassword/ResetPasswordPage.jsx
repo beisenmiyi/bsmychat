@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from '../../components/Modal/Modal';
 import WindowHeader from '../../components/WindowHeader/WindowHeader';
+import UsernameInput from '../../components/UsernameInput/UsernameInput';
 
 export default function ResetPasswordPage() {
 
@@ -55,29 +56,23 @@ export default function ResetPasswordPage() {
             <div className={styles.formContainer}>
                 <form action="" className={styles.form} onSubmit={handleSubmit}>
                     <h2>重置密码</h2>
-                    <input 
+                    <UsernameInput 
                         type="text" 
-                        className={styles.input} 
                         placeholder="用户名" 
-                        value={username}
                         onChange={(event) => setUsername(event.target.value)}
-                        required
+                        value={username}
                     />
-                    <input 
+                    <UsernameInput 
                         type="password" 
-                        className={styles.input} 
                         placeholder="新密码" 
-                        value={password}
                         onChange={(event) => setPassword(event.target.value)}
-                        required
+                        value={password}
                     />
-                    <input 
+                    <UsernameInput 
                         type="password" 
-                        className={styles.input} 
                         placeholder="确认密码" 
-                        value={confirmPassword}
                         onChange={(event) => setConfirmPassword(event.target.value)}
-                        required
+                        value={confirmPassword}
                     />
                     <Link to={"/"} className={styles.link} >返回登录</Link>
                     <LoginAndRegisterAndResetPasswordButton content={isLoading ? <>{"重置中..."}<FontAwesomeIcon icon={faSpinner} spinPulse /></> : "重置密码"} />
