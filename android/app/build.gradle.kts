@@ -56,4 +56,6 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    // https://mvnrepository.com/artifact/androidx.navigation/navigation-fragment-ktx
+    runtimeOnly("androidx.navigation:navigation-fragment-ktx:2.8.9")
 }
