@@ -1,15 +1,27 @@
+import { useState } from 'react';
 import ContactsList from './ContactsList/ContactsList'
 import ConversationList from './ConversationList/ConversationList'
 import styles from './ConversationListContainer.module.scss'
-import { Route, Routes } from 'react-router-dom'
 
-export default function ConversationListContainer() {
+export default function ConversationListContainer({ leftBarItemSelectedId }) {
+
+    const [conversationCellSelectedId, setConversationCellSelectedId] = useState(-1);
+    const [contactCellSelectedId, setContactCellSelectedId] = useState(-1);
+
+    const items = [
+        { id: 0, content: <div>头像</div> },
+        { id: 1, content: <ConversationList conversationCellSelectedId={conversationCellSelectedId} setConversationCellSelectedId={setConversationCellSelectedId} /> },
+        { id: 2, content: <ContactsList contactCellSelectedId={contactCellSelectedId} setContactCellSelectedId={setContactCellSelectedId} /> },
+        { id: 3, content: <div>设置</div> }
+    ];
+
     return (
         <div className={styles.root}>
-            <Routes>
-                <Route path="/" element={<ConversationList />} />
-                <Route path="/contacts" element={<ContactsList />} />
-            </Routes>
+            {
+                items.map((item) => (
+                    item.id === leftBarItemSelectedId ? item.content : null
+                ))
+            }
         </div>
     )
 }

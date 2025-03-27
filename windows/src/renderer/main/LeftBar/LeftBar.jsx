@@ -1,32 +1,25 @@
-import { useState } from 'react'
 import styles from './LeftBar.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faComment, faBars, faUserGroup, faImage } from '@fortawesome/free-solid-svg-icons';
 
-export default function LeftBar() {
-
-    const [activeIndex, setActiveIndex] = useState(0);
-
-    const handleClick = (index) => {
-        setActiveIndex(index);
-    }
+export default function LeftBar({ leftBarItemSelectedId, setLeftBarItemSelectedId }) {
 
     return (
         <div className={styles.root}>
-            <div className={styles.logoContainer}><FontAwesomeIcon icon={faImage} /></div>
+            <div className={styles.logoContainer}><FontAwesomeIcon icon={faImage} className={styles.FontAwesomeIcon} /></div>
             <div className={styles.items}>
                 {
-                    [1, 2, 3, 4].map(index => (
+                    [0, 1, 2, 3].map(index => (
                         <div
                             key={index}
-                            className={activeIndex === index ? styles.itemActive : styles.itemInactive}
-                            onClick={() => handleClick(index)}
+                            className={leftBarItemSelectedId === index ? styles.itemActive : styles.itemInactive}
+                            onClick={() => setLeftBarItemSelectedId(index)}
                         >
                             {
-                                index === 1 ? <FontAwesomeIcon icon={faUser} /> : 
-                                index === 2 ? <FontAwesomeIcon icon={faComment} /> : 
-                                index === 3 ? <FontAwesomeIcon icon={faUserGroup} /> : 
-                                <FontAwesomeIcon icon={faBars} />
+                                index === 0 ? <FontAwesomeIcon icon={faUser} className={styles.FontAwesomeIcon} /> : 
+                                index === 1 ? <FontAwesomeIcon icon={faComment} className={styles.FontAwesomeIcon} /> : 
+                                index === 2 ? <FontAwesomeIcon icon={faUserGroup} className={styles.FontAwesomeIcon} /> : 
+                                <FontAwesomeIcon icon={faBars} className={styles.FontAwesomeIcon} />
                             }
                         </div>
                     ))
