@@ -27,6 +27,9 @@ export default function ConversationList({ conversationCellSelectedId, setConver
 
     return (
         <div className={styles.root}>
+            <div className={styles.searchContactContainer}>
+                <input type="text" placeholder="搜索好友" className={styles.input} />
+            </div>
             <ul>
                 {
                     items.map((item) => (

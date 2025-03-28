@@ -1,5 +1,5 @@
 .root {
-    background-color: #eeeeee;
+    background-color: #cccccc;
     width: 60px;
     height: 100%;
     display: flex;
@@ -35,10 +35,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.itemInactive:hover {
-    background-color: #dddddd;
+    &:hover {
+        background-color: #cccccc;
+    }
 }
 
 .itemActive {

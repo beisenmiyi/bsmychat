@@ -1,6 +1,9 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import styles from "./ContactsList.module.scss"
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { useState } from "react"
 
-export default function ContactsList({ contactCellSelectedId, setContactCellSelectedId }) {
+export default function ContactsList({ contactCellSelectedId, setContactCellSelectedId, setConversationBoxSelectedId, setSearchContactResultData }) {
 
     const items = [
         { id: 0, content: '联系人1' },
@@ -25,8 +28,42 @@ export default function ContactsList({ contactCellSelectedId, setContactCellSele
         { id: 19, content: '联系人20' },
     ]
 
+    const [username, setUsername] = useState('');
+
+    const handleSearch = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await fetch(`http://localhost:8080/getUser?username=${username}`, {
+                method: 'GET'
+            });
+            if (response.ok) {
+                const data = await response.json();
+                setConversationBoxSelectedId(0);
+                setSearchContactResultData(data);
+            } else if (response.status === 404) {
+
+            } else {
+
+            }
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <div className={styles.root}>
+            <div className={styles.searchContactContainer}>
+                <form className={styles.inputContainer} onSubmit={(event) => handleSearch(event)}>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.FontAwesomeIcon} onClick={handleSearch} />
+                    <input 
+                        type="text" 
+                        placeholder="添加好友" 
+                        className={styles.input} 
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                </form>
+            </div>
             <ul>
                 {
                     items.map((item) => (

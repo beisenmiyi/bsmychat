@@ -1,5 +1,6 @@
 package com.beisenmiyi.server.service;
 
+import com.beisenmiyi.server.entity.UserDTO;
 import com.beisenmiyi.server.entity.UsersEntity;
 import com.beisenmiyi.server.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,10 @@ public class UsersService {
         String nano = String.valueOf(now.getNano());
 
         return epochSecond + nano;
+    }
+
+    public UserDTO getUser(String username) {
+        UsersEntity usersEntity = usersRepository.findByUsername(username);
+        return usersEntity == null ? null : new UserDTO(usersEntity.getUsername(), usersEntity.getNickname());
     }
 }
